@@ -4,6 +4,14 @@ import * as yup from "yup";
 
 export default function Form() {
 
+    const [formState, setFormState] = useState({
+        name: "",
+        email: "",
+        terms: "",
+        positions: "",
+        motivation: ""
+      });
+
     <form >
     <label htmlFor="name">
       Name
@@ -44,5 +52,7 @@ export default function Form() {
     </label>
     <button>Submit</button>
   </form>
+
+  
 
 }
