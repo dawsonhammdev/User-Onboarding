@@ -20,6 +20,33 @@ export default function Form() {
         motivation: ""
       });
 
+      const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    formSchema.isValid(formState).then(valid => {
+      setButtonDisabled(!valid);
+    });
+  }, [formState]);
+
+  const formSubmit = e => {
+    e.preventDefault();
+    axios
+      .post("https://reqres.in/api/users", formState)
+      .then(res => {
+        setPost(res.data); // get just the form data from the REST api
+        console.log("success", post);
+        // reset form if successful
+        setFormState({
+          name: "",
+          email: "",
+          terms: "",
+          positions: "",
+          motivation: ""
+        });
+      })
+      .catch(err => console.log(err.response));
+  };
+
     <form >
     <label htmlFor="name">
       Name
