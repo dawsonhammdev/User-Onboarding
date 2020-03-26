@@ -14,10 +14,10 @@ const formSchema = yup.object().shape({
 });
 
 export default function Form() {
-  // state for whether our button should be disabled or not.
+
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  // managing state for our form inputs
+
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -26,7 +26,7 @@ export default function Form() {
     motivation: ""
   });
 
-  // state for our errors
+
   const [errors, setErrors] = useState({
     name: "",
     email: "",
@@ -35,7 +35,7 @@ export default function Form() {
     motivation: ""
   });
 
-  // new state to set our post request too. So we can console.log and see it.
+
   const [post, setPost] = useState([]);
 
   useEffect(() => {
@@ -49,9 +49,9 @@ export default function Form() {
     axios
       .post("https://reqres.in/api/users", formState)
       .then(res => {
-        setPost(res.data); // get just the form data from the REST api
+        setPost(res.data); 
         console.log("success", post);
-        // reset form if successful
+
         setFormState({
           name: "",
           email: "",
@@ -64,7 +64,6 @@ export default function Form() {
   };
 
   const validateChange = e => {
-    // Reach will allow us to "reach" into the schema and test only one part.
     yup
       .reach(formSchema, e.target.name)
       .validate(e.target.name === "terms" ? e.target.checked : e.target.value)
@@ -148,7 +147,6 @@ export default function Form() {
         />
         Terms & Conditions
       </label>
-      {/* displaying our post request data */}
       <pre>{JSON.stringify(post, null, 2)}</pre>
       <button disabled={buttonDisabled}>Submit</button>
     </form>
