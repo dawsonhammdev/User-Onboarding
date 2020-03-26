@@ -7,6 +7,9 @@ describe("Testing our volunteer form", function() {
         cy.get('input[name="name"]')
         .type("Dawson")
         .should("have.value", "Dawson")
+        cy.get('input[name="email"]')
+        .type("email@email.com")
+        .should("have.value", "email@email.com")
 
 
 
