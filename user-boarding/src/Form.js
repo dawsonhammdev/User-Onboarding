@@ -12,6 +12,14 @@ export default function Form() {
         motivation: ""
       });
 
+      const [errors, setErrors] = useState({
+        name: "",
+        email: "",
+        terms: "",
+        positions: "",
+        motivation: ""
+      });
+
     <form >
     <label htmlFor="name">
       Name
@@ -46,7 +54,7 @@ export default function Form() {
       <input
         type="checkbox"
         name="terms"
-        checked={true} {/* will change later with state */}
+        checked={true}
       />
       Terms & Conditions
     </label>
