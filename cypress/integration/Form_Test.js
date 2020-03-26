@@ -17,12 +17,10 @@ describe("Testing our onboarding form", function() {
       .select('Tabling')
       .should("have.value", "Tabling")
 
-
-
-
-
-
-
+      cy.get('[type="checkbox"]')
+      .check()
+      .should("be.checked")
+      cy.get('button').click()
 
     })
 })
